@@ -792,6 +792,43 @@
     line-height: 1.5;
 }
 
+.lector-notice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    gap: 0.75rem;
+    max-width: 480px;
+}
+
+.lector-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--usuarios-teal-soft);
+    color: var(--usuarios-teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.lector-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--usuarios-text);
+}
+
+.lector-desc {
+    font-size: 0.9rem;
+    color: var(--usuarios-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
 /* ══════════════════════════════════════════════════
     RESPONSIVE
    ══════════════════════════════════════════════════ */
