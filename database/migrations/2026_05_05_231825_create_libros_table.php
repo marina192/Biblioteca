@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('editorial');
             $table->string('imagenes')->nullable();
             $table->date('fecha_publicacion');
-            $table->softdeletes();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

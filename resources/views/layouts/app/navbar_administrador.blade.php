@@ -2,6 +2,9 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
         @include('partials.head')
+        @vite(['resources/css/app.css',
+                'resources/css/admin/usuarios.css'])
+        @livewireStyles
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -21,7 +24,6 @@
             }
 
             body {
-                background-color: var(--arc-bg) !important;
                 font-family: 'Crimson Text', Georgia, serif;
             }
 
@@ -200,7 +202,6 @@
 
             /* ── Main ── */
             main, [data-flux-main] {
-                background-color: var(--arc-bg) !important;
             }
 
             /* ── Logo / brand ── */
@@ -322,7 +323,7 @@
             }
         </style>
     </head>
-    <body class="min-h-screen bg-[#060e1c] text-white overflow-x-hidden">
+    <body class="min-h-screen bg-white text-gray-900 overflow-x-hidden">
 
         <!-- Navegación móvil -->
         <flux:sidebar
@@ -339,9 +340,9 @@
             <flux:navlist>
 
                 <flux:navlist.item
-                    href="{{ route('admin.dashboard') }}"
+                    href="{{ route('usuarios.index') }}"
                     wire:navigate
-                    :current="request()->routeIs('admin.dashboard')"
+                    :current="request()->routeIs('usuarios.index')"
                 >
                     Usuarios
                 </flux:navlist.item>
@@ -418,11 +419,11 @@
                 <nav style="display:flex; align-items:stretch; height:100%;">
 
                     <a
-                        href="{{ route('admin.dashboard') }}"
+                        href="{{ route('usuarios.index') }}"
                         wire:navigate
                         style="
                             margin-right:60px;
-                            @if(request()->routeIs('admin.dashboard'))
+                            @if(request()->routeIs('usuarios.index'))
                                 border-bottom:3px solid #3ecfaa;
                                 color:#3ecfaa;
                                 box-shadow: 0 3px 12px rgba(62,207,170,0.35);

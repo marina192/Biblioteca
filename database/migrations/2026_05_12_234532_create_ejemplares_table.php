@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('estado', ['disponible', 'prestado', 'reservado'])->default('disponible');
             $table->string('ubicacion');
             $table->string('nombre');
-            $table->softdeletes();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
