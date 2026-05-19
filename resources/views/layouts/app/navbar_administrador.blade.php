@@ -343,33 +343,33 @@
             <flux:navlist>
 
                 <flux:navlist.item
-                    href="{{ route('usuarios.index') }}"
+                    href="{{ route('admin.usuarios.index') }}"
                     wire:navigate
-                    :current="request()->routeIs('usuarios.*')"
+                    :current="request()->routeIs('admin.usuarios.*')"
                 >
                     Usuarios
                 </flux:navlist.item>
 
                 <flux:navlist.item
-                    href="{{ route('categorias.index') }}"
+                    href="{{ route('admin.categorias.index') }}"
                     wire:navigate
-                    :current="request()->routeIs('categorias.*')"
+                    :current="request()->routeIs('admin.categorias.*')"
                 >
                     Categorías
                 </flux:navlist.item>
 
                 <flux:navlist.item
-                    href="{{ route('libros.index') }}"
+                    href="{{ route('admin.libros.index') }}"
                     wire:navigate
-                    :current="request()->routeIs('libros.*')"
+                    :current="request()->routeIs('admin.libros.*')"
                 >
                     Libros
                 </flux:navlist.item>
 
                 <flux:navlist.item
-                    href="{{ route('ejemplares.index') }}"
+                    href="{{ route('admin.ejemplares.index') }}"
                     wire:navigate
-                    :current="request()->routeIs('ejemplares.*')"
+                    :current="request()->routeIs('admin.ejemplares.*')"
                 >
                     Ejemplares
                 </flux:navlist.item>
@@ -430,11 +430,11 @@
                 <nav style="display:flex; align-items:stretch; height:100%;">
 
                     <a
-                        href="{{ route('usuarios.index') }}"
+                        href="{{ route('admin.usuarios.index') }}"
                         wire:navigate
                         style="
                             margin-right:60px;
-                            @if(request()->routeIs('usuarios.*'))
+                            @if(request()->routeIs('admin.usuarios.*'))
                                 border-bottom:3px solid #3ecfaa;
                                 color:#3ecfaa;
                                 box-shadow: 0 3px 12px rgba(62,207,170,0.35);
@@ -449,11 +449,11 @@
                     </a>
 
                     <a
-                        href="{{ route('categorias.index') }}"
+                        href="{{ route('admin.categorias.index') }}"
                         wire:navigate
                         style="
                             margin-right:60px;
-                            @if(request()->routeIs('categorias.*'))
+                            @if(request()->routeIs('admin.categorias.*'))
                                 border-bottom:3px solid #3ecfaa;
                                 color:#3ecfaa;
                                 box-shadow: 0 3px 12px rgba(62,207,170,0.35);
@@ -468,11 +468,11 @@
                     </a>
 
                     <a
-                        href="{{ route('libros.index') }}"
+                        href="{{ route('admin.libros.index') }}"
                         wire:navigate
                         style="
                             margin-right:60px;
-                            @if(request()->routeIs('libros.*'))
+                            @if(request()->routeIs('admin.libros.*'))
                                 border-bottom:3px solid #3ecfaa;
                                 color:#3ecfaa;
                                 box-shadow: 0 3px 12px rgba(62,207,170,0.35);
@@ -487,11 +487,11 @@
                     </a>
 
                     <a
-                        href="{{ route('ejemplares.index') }}"
+                        href="{{ route('admin.ejemplares.index') }}"
                         wire:navigate
                         style="
                             margin-right:60px;
-                            @if(request()->routeIs('ejemplares.*'))
+                            @if(request()->routeIs('admin.ejemplares.*'))
                                 border-bottom:3px solid #3ecfaa;
                                 color:#3ecfaa;
                                 box-shadow: 0 3px 12px rgba(62,207,170,0.35);

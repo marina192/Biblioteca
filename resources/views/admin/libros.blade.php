@@ -17,12 +17,12 @@
 
 {{-- Filtros de categoría --}}
 <div class="libros-filters-row">
-    <a href="{{ route('libros.index') }}"
+    <a href="{{ route('admin.libros.index') }}"
         class="libros-filter-btn {{ !request('categoria') ? 'active' : '' }}">
         Todos
     </a>
     @foreach ($categorias as $cat)
-        <a href="{{ route('libros.index', ['categoria' => $cat->id]) }}"
+        <a href="{{ route('admin.libros.index', ['categoria' => $cat->id]) }}"
             class="libros-filter-btn {{ request('categoria') == $cat->id ? 'active' : '' }}">
             {{ $cat->nombre }}
         </a>
@@ -30,7 +30,7 @@
 </div>
 
 {{-- Buscador --}}
-<form method="GET" action="{{ route('libros.index') }}" class="libros-search-row">
+<form method="GET" action="{{ route('admin.libros.index') }}" class="libros-search-row">
     @if (request('categoria'))
         <input type="hidden" name="categoria" value="{{ request('categoria') }}">
     @endif
@@ -140,7 +140,7 @@
                 </div>
 
                 <div class="libros-card-actions">
-                    <a href="{{ route('libros.edit', $libro->id) }}" class="libros-action-btn">
+                    <a href="{{ route('admin.libros.edit', $libro->id) }}" class="libros-action-btn">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
@@ -148,7 +148,7 @@
                         </svg>
                         Editar
                     </a>
-                    <form method="POST" action="{{ route('libros.destroy', $libro->id) }}"
+                    <form method="POST" action="{{ route('admin.libros.destroy', $libro->id) }}"
                             class="libros-inline-form"
                             onsubmit="return confirm('¿Eliminar este libro?')">
                         @csrf
@@ -198,7 +198,7 @@
             </button>
         </div>
 
-        <form method="POST" action="{{ route('libros.store') }}"
+        <form method="POST" action="{{ route('admin.libros.store') }}"
                 enctype="multipart/form-data" class="libros-modal-form">
             @csrf
 

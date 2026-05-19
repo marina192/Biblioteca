@@ -25,7 +25,7 @@
 </div>
 
 {{-- Buscador --}}
-<form method="GET" action="{{ route('categorias.index') }}" class="cat-search-row">
+<form method="GET" action="{{ route('admin.categorias.index') }}" class="cat-search-row">
 
     <input
         type="text"
@@ -194,7 +194,7 @@
                 <div class="cat-card-actions">
 
                     <a
-                        href="{{ route('categorias.edit', $categoria->id) }}"
+                        href="{{ route('admin.categorias.edit', $categoria->id) }}"
                         class="cat-action-btn"
                     >
                         Editar
@@ -202,7 +202,7 @@
 
                     <form
                         method="POST"
-                        action="{{ route('categorias.destroy', $categoria->id) }}"
+                        action="{{ route('admin.categorias.destroy', $categoria->id) }}"
                         class="cat-inline-form"
                         onsubmit="return confirm('¿Eliminar categoría?')"
                     >
@@ -270,7 +270,7 @@
 
         <form
             method="POST"
-            action="{{ route('categorias.store') }}"
+            action="{{ route('admin.categorias.store') }}"
             enctype="multipart/form-data"
             class="cat-modal-form"
         >

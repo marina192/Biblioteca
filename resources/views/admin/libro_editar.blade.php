@@ -3,7 +3,7 @@
 {{-- Encabezado --}}
 <div class="ledit-page-header">
     <div class="ledit-page-header-left">
-        <a href="{{ route('libros.index') }}" class="ledit-btn-back">
+        <a href="{{ route('admin.libros.index') }}" class="ledit-btn-back">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                 <path d="M19 12H5M5 12l7 7M5 12l7-7"/>
@@ -19,7 +19,7 @@
 
 <form
     method="POST"
-    action="{{ route('libros.update', $libro->id) }}"
+    action="{{ route('admin.libros.update', $libro->id) }}"
     enctype="multipart/form-data"
     class="ledit-layout"
 >
@@ -221,7 +221,7 @@
 
     {{-- Barra de acciones --}}
     <div class="ledit-action-bar">
-        <a href="{{ route('libros.index') }}" class="ledit-btn-cancel">Cancelar</a>
+        <a href="{{ route('admin.libros.index') }}" class="ledit-btn-cancel">Cancelar</a>
         <button type="submit" class="ledit-btn-submit">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round">

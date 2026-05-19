@@ -2,6 +2,9 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
         @include('partials.head')
+        @vite(['resources/css/app.css',
+                ])
+        @livewireStyles
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -21,7 +24,6 @@
             }
 
             body {
-                background-color: var(--arc-bg) !important;
                 font-family: 'Crimson Text', Georgia, serif;
             }
 
@@ -200,7 +202,6 @@
 
             /* ── Main ── */
             main, [data-flux-main] {
-                background-color: var(--arc-bg) !important;
             }
 
             /* ── Logo / brand ── */
@@ -322,7 +323,7 @@
             }
         </style>
     </head>
-    <body class="min-h-screen bg-[#060e1c] text-white overflow-x-hidden">
+    <body class="min-h-screen bg-white text-gray-900 overflow-x-hidden">
 
         <!-- Navegación móvil -->
         <flux:sidebar
@@ -347,9 +348,9 @@
                 </flux:navlist.item>
 
                 <flux:navlist.item
-                    href="#"
+                    href="{{ route('lector.categorias.index') }}"
                     wire:navigate
-                    :current="request()->routeIs('vista')"
+                    :current="request()->routeIs('lector.categorias.*')"
                 >
                     Categorías
                 </flux:navlist.item>
@@ -421,11 +422,11 @@
                     </a>
 
                     <a
-                        href="#"
+                        href="{{ route('lector.categorias.index') }}"
                         wire:navigate
                         style="
                             margin-right:60px;
-                            @if(request()->routeIs('libros'))
+                            @if(request()->routeIs('lector.categorias.*'))
                                 border-bottom:3px solid #3ecfaa;
                                 color:#3ecfaa;
                                 box-shadow: 0 3px 12px rgba(62,207,170,0.35);

@@ -28,7 +28,7 @@
     {{-- ── BARRA DE BÚSQUEDA Y FILTROS ── --}}
     <form
         method="GET"
-        action="{{ route('usuarios.index') }}"
+        action="{{ route('admin.usuarios.index') }}"
         class="toolbar"
     >
         <!-- Barra de búsqueda -->
@@ -157,7 +157,7 @@
                                 @if (!$isSuperAdmin)
                                     @if ($isAdmin)
                                         <div class="actions-group">
-                                            <a href="{{ route('usuarios.edit', $usuario->id) }}"
+                                            <a href="{{ route('admin.usuarios.edit', $usuario->id) }}"
                                                 class="btn-action btn-action--edit"
                                                 title="Modificar">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
@@ -170,7 +170,7 @@
                                             </a>
 
                                             <form
-                                                action="{{ route('usuarios.destroy', $usuario->id) }}"
+                                                action="{{ route('admin.usuarios.destroy', $usuario->id) }}"
                                                 method="POST"
                                                 class="delete-form"
                                                 onsubmit="return confirm('¿Eliminar al usuario {{ $usuario->name }}?')"
@@ -194,7 +194,7 @@
                                         <div class="actions-group">
                                             {{-- Cambio rápido de rol (solo lectores) --}}
                                             @if(!$isAdmin)
-                                                <form action="{{ route('usuarios.update', $usuario->id) }}"
+                                                <form action="{{ route('admin.usuarios.update', $usuario->id) }}"
                                                         method="POST" class="role-form">
                                                     @csrf
                                                     @method('PUT')
@@ -252,7 +252,7 @@
             </button>
         </div>
 
-        <form method="POST" action="{{ route('usuarios.store') }}" enctype="multipart/form-data" class="modal-form">
+        <form method="POST" action="{{ route('admin.usuarios.store') }}" enctype="multipart/form-data" class="modal-form">
             @csrf
 
             @if ($errors->any())

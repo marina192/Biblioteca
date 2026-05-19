@@ -6,7 +6,7 @@
     <div class="page-header">
         <div class="page-header__text">
             <div class="edit-breadcrumb">
-                <a href="{{ route('usuarios.index') }}" class="breadcrumb-link">
+                <a href="{{ route('admin.usuarios.index') }}" class="breadcrumb-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round">
@@ -38,7 +38,7 @@
             <p class="superadmin-desc">
                 <strong>{{ $usuario->name }}</strong> es un Super Administrador del sistema y no puede ser modificado.
             </p>
-            <a href="{{ route('usuarios.index') }}" class="btn-invite" style="display:inline-flex; margin-top:0.5rem;">
+            <a href="{{ route('admin.usuarios.index') }}" class="btn-invite" style="display:inline-flex; margin-top:0.5rem;">
                 Volver al listado
             </a>
         </div>
@@ -58,7 +58,7 @@
             <p class="lector-desc">
                 <strong>{{ $usuario->name }}</strong> es un Lector del sistema y no puede ser modificado.
             </p>
-            <a href="{{ route('usuarios.index') }}" class="btn-invite" style="display:inline-flex; margin-top:0.5rem;">
+            <a href="{{ route('admin.usuarios.index') }}" class="btn-invite" style="display:inline-flex; margin-top:0.5rem;">
                 Volver al listado
             </a>
         </div>
@@ -78,7 +78,7 @@
             <p class="superadmin-desc">
                 Solo los <strong>Super Administradores</strong> pueden modificar este usuario.
             </p>
-            <a href="{{ route('usuarios.index') }}" class="btn-invite" style="display:inline-flex; margin-top:0.5rem;">
+            <a href="{{ route('admin.usuarios.index') }}" class="btn-invite" style="display:inline-flex; margin-top:0.5rem;">
                 Volver al listado
             </a>
         </div>
@@ -107,7 +107,7 @@
             <div class="edit-divider"></div>
 
             <form method="POST"
-                    action="{{ route('usuarios.update', $usuario->id) }}"
+                    action="{{ route('admin.usuarios.update', $usuario->id) }}"
                     enctype="multipart/form-data"
                     class="edit-form">
                 @csrf
@@ -191,7 +191,7 @@
                 @endif
 
                 <div class="edit-form-footer">
-                    <a href="{{ route('usuarios.index') }}" class="btn-cancel">
+                    <a href="{{ route('admin.usuarios.index') }}" class="btn-cancel">
                         Cancelar
                     </a>
                     <button type="submit" class="btn-submit">

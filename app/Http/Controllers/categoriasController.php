@@ -63,7 +63,7 @@ class categoriasController extends Controller
             'imagenes' => $rutas,
         ]);
 
-        return redirect()->route('categorias.index')->with('success', 'Categoría creada exitosamente.');
+        return redirect()->route('admin.categorias.index')->with('success', 'Categoría creada exitosamente.');
     }
 
     /**
@@ -129,7 +129,7 @@ class categoriasController extends Controller
             'imagenes' => $rutas,
         ]);
 
-        return redirect()->route('categorias.index')->with('success', 'Categoría actualizada.');
+        return redirect()->route('admin.categorias.index')->with('success', 'Categoría actualizada.');
     }
 
     /**
@@ -145,6 +145,6 @@ class categoriasController extends Controller
         }
         $categoria->delete();
 
-        return redirect()->route('categorias.index')->with('success', 'Categoría eliminada.');
+        return redirect()->route('admin.categorias.index')->with('success', 'Categoría eliminada.');
     }
 }

@@ -38,8 +38,9 @@ Route::get('/dashboard', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['auth', 'role:lector'])->group(function () {
-    Route::get('/lector/dashboard', LectorDashboard::class)->name('lector.dashboard');
+Route::middleware(['auth', 'role:lector'])->prefix('lector')->name('lector.')->group(function () {
+    Route::get('dashboard', LectorDashboard::class)->name('dashboard');
+    Route::resource('categorias', categoriasController::class)->only(['index']);
 });
 
 /*
@@ -48,8 +49,8 @@ Route::middleware(['auth', 'role:lector'])->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/dashboard', AdminDashboard::class)->name('admin.dashboard');
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('dashboard', AdminDashboard::class)->name('dashboard');
     Route::resource('usuarios', usuarioController::class);
     Route::resource('categorias', categoriasController::class);
     Route::resource('libros', librosController::class);

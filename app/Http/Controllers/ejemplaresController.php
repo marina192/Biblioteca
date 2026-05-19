@@ -44,7 +44,7 @@ class ejemplaresController extends Controller
 
         Ejemplar::create($request->all());
 
-        return redirect()->route('ejemplares.index')->with('success', 'Ejemplar creado exitosamente.');
+        return redirect()->route('admin.ejemplares.index')->with('success', 'Ejemplar creado exitosamente.');
     }
 
     /**
@@ -77,7 +77,7 @@ class ejemplaresController extends Controller
         $ejemplar = Ejemplar::findOrFail($id);
         $ejemplar->update($request->all());
 
-        return redirect()->route('ejemplares.index')->with('success', 'Ejemplar actualizado exitosamente.');
+        return redirect()->route('admin.ejemplares.index')->with('success', 'Ejemplar actualizado exitosamente.');
     }
 
     /**
@@ -85,6 +85,9 @@ class ejemplaresController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ejemplar = Ejemplar::findOrFail($id);
+        $ejemplar->delete();
+
+        return redirect()->route('admin.ejemplares.index')->with('success', 'Ejemplar eliminado exitosamente.');
     }
 }

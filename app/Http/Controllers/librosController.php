@@ -84,7 +84,7 @@ class librosController extends Controller
             $libro->categorias()->attach($request->categorias);
         }
 
-        return redirect()->route('libros.index')->with('success', 'Libro creado exitosamente.');
+        return redirect()->route('admin.libros.index')->with('success', 'Libro creado exitosamente.');
     }
 
     /**
@@ -144,7 +144,7 @@ class librosController extends Controller
             'imagenes' => $rutas,
         ]);
 
-        return redirect()->route('libros.index')->with('success', 'Libro actualizado.');
+        return redirect()->route('admin.libros.index')->with('success', 'Libro actualizado.');
     }
 
     /**
@@ -152,6 +152,17 @@ class librosController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $libro = Libro::findOrFail($id);
+
+        // Eliminar imágenes del almacenamiento
+        if ($libro->imagenes) {
+            foreach ($libro->imagenes as $imagen) {
+                Storage::disk('public')->delete($imagen);
+            }
+        }
+
+        $libro->delete();
+
+        return redirect()->route('admin.libros.index')->with('success', 'Libro eliminado exitosamente.');
     }
 }

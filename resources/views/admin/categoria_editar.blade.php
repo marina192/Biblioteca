@@ -3,7 +3,7 @@
 {{-- Encabezado --}}
 <div class="cedit-page-header">
     <div class="cedit-page-header-left">
-        <a href="{{ route('categorias.index') }}" class="cedit-btn-back">
+        <a href="{{ route('admin.categorias.index') }}" class="cedit-btn-back">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                 <path d="M19 12H5M5 12l7 7M5 12l7-7"/>
@@ -19,7 +19,7 @@
 
 <form
     method="POST"
-    action="{{ route('categorias.update', $categoria->id) }}"
+    action="{{ route('admin.categorias.update', $categoria->id) }}"
     enctype="multipart/form-data"
     class="cedit-edit-layout"
 >
@@ -172,7 +172,7 @@
 
     {{-- Barra de acciones --}}
     <div class="cedit-action-bar">
-        <a href="{{ route('categorias.index') }}" class="cedit-btn-cancel">Cancelar</a>
+        <a href="{{ route('admin.categorias.index') }}" class="cedit-btn-cancel">Cancelar</a>
         <button type="submit" class="cedit-btn-submit">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round">

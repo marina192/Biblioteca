@@ -3,7 +3,7 @@
 {{-- Encabezado --}}
 <div class="ejemedit-page-header">
     <div class="ejemedit-page-header-left">
-        <a href="{{ route('ejemplares.index') }}" class="ejemedit-btn-back">
+        <a href="{{ route('admin.ejemplares.index') }}" class="ejemedit-btn-back">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                 <path d="M19 12H5M5 12l7 7M5 12l7-7"/>
@@ -19,7 +19,7 @@
 
 <form
     method="POST"
-    action="{{ route('ejemplares.update', $ejemplar->id) }}"
+    action="{{ route('admin.ejemplares.update', $ejemplar->id) }}"
     enctype="multipart/form-data"
     class="ejemedit-edit-layout"
 >
@@ -77,7 +77,7 @@
 
     {{-- Barra de acciones --}}
     <div class="ejemedit-action-bar">
-        <a href="{{ route('ejemplares.index') }}" class="ejemedit-btn-cancel">Cancelar</a>
+        <a href="{{ route('admin.ejemplares.index') }}" class="ejemedit-btn-cancel">Cancelar</a>
         <button type="submit" class="ejemedit-btn-submit">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round">

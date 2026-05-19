@@ -16,7 +16,7 @@
 </div>
 
 {{-- Buscador --}}
-<form method="GET" action="{{ route('ejemplares.index') }}" class="ejmp-search-row">
+<form method="GET" action="{{ route('admin.ejemplares.index') }}" class="ejmp-search-row">
     <div class="ejmp-search-input-wrap">
         <svg class="ejmp-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
@@ -31,7 +31,7 @@
             class="ejmp-search-input"
         >
         @if(request('search'))
-            <a href="{{ route('ejemplares.index') }}" class="ejmp-search-clear" title="Limpiar búsqueda">
+            <a href="{{ route('admin.ejemplares.index') }}" class="ejmp-search-clear" title="Limpiar búsqueda">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                     <path d="M18 6L6 18M6 6l12 12"/>
                 </svg>
@@ -92,7 +92,7 @@
                             <td class="ejmp-td-ubicacion">{{ $ejemplar->ubicacion }}</td>
                             <td>
                                 <div class="ejmp-actions">
-                                    <a href="{{ route('ejemplares.edit', $ejemplar->id) }}" class="ejmp-action-btn">
+                                    <a href="{{ route('admin.ejemplares.edit', $ejemplar->id) }}" class="ejmp-action-btn">
                                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
                                             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
@@ -100,7 +100,7 @@
                                         </svg>
                                         Editar
                                     </a>
-                                    <form action="{{ route('ejemplares.destroy', $ejemplar->id) }}" method="POST"
+                                    <form action="{{ route('admin.ejemplares.destroy', $ejemplar->id) }}" method="POST"
                                             class="ejmp-inline-form"
                                             onsubmit="return confirm('¿Eliminar este ejemplar?')">
                                         @csrf
@@ -140,7 +140,7 @@
             @endif
         </p>
         @if(request('search'))
-            <a href="{{ route('ejemplares.index') }}" class="ejmp-empty-link">Ver todos los ejemplares</a>
+            <a href="{{ route('admin.ejemplares.index') }}" class="ejmp-empty-link">Ver todos los ejemplares</a>
         @endif
     </div>
 @endforelse
@@ -164,7 +164,7 @@
             </button>
         </div>
 
-        <form method="POST" action="{{ route('ejemplares.store') }}" enctype="multipart/form-data"
+        <form method="POST" action="{{ route('admin.ejemplares.store') }}" enctype="multipart/form-data"
                 class="ejmp-modal-form">
             @csrf
 

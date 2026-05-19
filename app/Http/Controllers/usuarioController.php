@@ -68,7 +68,7 @@ class usuarioController extends Controller
             'password' => bcrypt($request->password),
         ])->assignRole($request->rol);
 
-        return redirect()->route('usuarios.index')->with('success', 'Usuario agregado exitosamente.');
+        return redirect()->route('admin.usuarios.index')->with('success', 'Usuario agregado exitosamente.');
     }
 
     /**
@@ -101,7 +101,7 @@ class usuarioController extends Controller
             ]);
             $usuario->syncRoles([$request->rol]);
 
-            return redirect()->route('usuarios.index')->with('success', 'Rol actualizado exitosamente.');
+            return redirect()->route('admin.usuarios.index')->with('success', 'Rol actualizado exitosamente.');
         }
 
         $request->validate([
@@ -121,7 +121,7 @@ class usuarioController extends Controller
             ]);
         }
 
-        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado exitosamente.');
+        return redirect()->route('admin.usuarios.index')->with('success', 'Usuario actualizado exitosamente.');
     }
 
     /**
@@ -132,6 +132,6 @@ class usuarioController extends Controller
         $usuario = user::findOrFail($id);
         $usuario->delete();
 
-        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado exitosamente.');
+        return redirect()->route('admin.usuarios.index')->with('success', 'Usuario eliminado exitosamente.');
     }
 }
