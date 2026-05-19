@@ -12,7 +12,8 @@ export default defineConfig({
                 'resources/css/admin/usuarios.css',
                 'resources/css/admin/categorias.css',
                 'resources/css/admin/libros.css',
-                'resources/css/admin/ejemplares.css'
+                'resources/css/admin/ejemplares.css',
+                'resources/css/lector/categorias.css'
             ],
             refresh: true,
             fonts: [

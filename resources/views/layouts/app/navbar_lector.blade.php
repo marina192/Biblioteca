@@ -3,7 +3,7 @@
     <head>
         @include('partials.head')
         @vite(['resources/css/app.css',
-                ])
+                'resources/css/lector/categorias.css'])
         @livewireStyles
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

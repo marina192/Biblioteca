@@ -26,7 +26,12 @@ class categoriasController extends Controller
 
         $categorias = $query->paginate(10)->withQueryString();
 
-        return view('admin.categorias', compact('categorias'));
+        if(auth()->user()->hasRole('admin')){
+            return view('admin.categorias', compact('categorias'));
+        }
+        if(auth()->user()->hasRole('lector')){
+            return view('lector.categorias', compact('categorias'));
+        }
     }
 
     /**
