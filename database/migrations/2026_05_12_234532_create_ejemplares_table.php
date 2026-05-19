@@ -14,10 +14,8 @@ return new class extends Migration
         Schema::create('ejemplares', function (Blueprint $table) {
             $table->id();
             $table->foreignId('libro_id')->constrained('libros')->onDelete('cascade');
-            $table->string('codigo_unico')->unique();
-            $table->enum('estado', ['disponible', 'prestado', 'reservado'])->default('disponible');
+            $table->enum('estado', ['disponible', 'prestado', 'dañado'])->default('disponible');
             $table->string('ubicacion');
-            $table->string('nombre');
             $table->softDeletes();
             $table->timestamps();
         });

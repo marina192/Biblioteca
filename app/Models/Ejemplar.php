@@ -13,10 +13,8 @@ class Ejemplar extends Model
 
     protected $fillable = [
         'libro_id',
-        'codigo_unico',
         'estado',
         'ubicacion',
-        'nombre',
     ];
 
     // Un ejemplar pertenece a un libro

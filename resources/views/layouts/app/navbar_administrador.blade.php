@@ -5,7 +5,8 @@
         @vite(['resources/css/app.css',
                 'resources/css/admin/usuarios.css',
                 'resources/css/admin/categorias.css',
-                'resources/css/admin/libros.css'])
+                'resources/css/admin/libros.css',
+                'resources/css/admin/ejemplares.css'])
         @livewireStyles
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -366,9 +367,9 @@
                 </flux:navlist.item>
 
                 <flux:navlist.item
-                    href="#"
+                    href="{{ route('ejemplares.index') }}"
                     wire:navigate
-                    :current="request()->routeIs('vista')"
+                    :current="request()->routeIs('ejemplares.*')"
                 >
                     Ejemplares
                 </flux:navlist.item>
@@ -486,11 +487,11 @@
                     </a>
 
                     <a
-                        href="#"
+                        href="{{ route('ejemplares.index') }}"
                         wire:navigate
                         style="
                             margin-right:60px;
-                            @if(request()->routeIs('ejemplares'))
+                            @if(request()->routeIs('ejemplares.*'))
                                 border-bottom:3px solid #3ecfaa;
                                 color:#3ecfaa;
                                 box-shadow: 0 3px 12px rgba(62,207,170,0.35);

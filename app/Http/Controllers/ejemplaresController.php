@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Libro;
+use App\Models\Ejemplar;
 
 class ejemplaresController extends Controller
 {
@@ -11,7 +13,14 @@ class ejemplaresController extends Controller
      */
     public function index()
     {
-        //
+        $ejemplares = Ejemplar::with('libro')
+            ->when(request('search'), function ($q, $search) {
+                $q->where('id', $search)
+                ->orWhereHas('libro', fn($q) => $q->where('titulo', 'like', "%{$search}%"));
+            })
+            ->paginate(20);
+        $libros = Libro::all();
+        return view('admin.ejemplares', compact('ejemplares', 'libros'));
     }
 
     /**
@@ -27,7 +36,15 @@ class ejemplaresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'libro_id' => 'required|exists:libros,id',
+            'estado' => 'required|in:disponible,prestado,dañado',
+            'ubicacion' => 'required',
+        ]);
+
+        Ejemplar::create($request->all());
+
+        return redirect()->route('ejemplares.index')->with('success', 'Ejemplar creado exitosamente.');
     }
 
     /**
@@ -43,7 +60,8 @@ class ejemplaresController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ejemplar = Ejemplar::findOrFail($id);
+        return view('admin.ejemplar_editar', compact('ejemplar'));
     }
 
     /**
@@ -51,7 +69,15 @@ class ejemplaresController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'estado' => 'sometimes|in:disponible,prestado,dañado',
+            'ubicacion' => 'required',
+        ]);
+
+        $ejemplar = Ejemplar::findOrFail($id);
+        $ejemplar->update($request->all());
+
+        return redirect()->route('ejemplares.index')->with('success', 'Ejemplar actualizado exitosamente.');
     }
 
     /**
