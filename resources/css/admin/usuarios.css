@@ -28,7 +28,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap');
 
 /* ══════════════════════════════════════════════════
-   LAYOUT PRINCIPAL
+    LAYOUT PRINCIPAL
    ══════════════════════════════════════════════════ */
 .usuarios-page {
     font-family: var(--usuarios-font);
@@ -42,7 +42,7 @@
 }
 
 /* ══════════════════════════════════════════════════
-   ENCABEZADO
+    ENCABEZADO
    ══════════════════════════════════════════════════ */
 .page-header {
     display: flex;
@@ -97,7 +97,7 @@
 }
 
 /* ══════════════════════════════════════════════════
-   BARRA DE BÚSQUEDA Y FILTROS
+    BARRA DE BÚSQUEDA Y FILTROS
    ══════════════════════════════════════════════════ */
 .toolbar {
     display: flex;
@@ -172,7 +172,7 @@
 }
 
 /* ══════════════════════════════════════════════════
-   TABLA CARD
+    TABLA CARD
    ══════════════════════════════════════════════════ */
 .table-card {
     background: var(--usuarios-card);
@@ -416,7 +416,7 @@
 }
 
 /* ══════════════════════════════════════════════════
-   PIE DE TABLA / PAGINACIÓN
+    PIE DE TABLA / PAGINACIÓN
    ══════════════════════════════════════════════════ */
 .table-footer {
     display: flex;
@@ -477,7 +477,7 @@
 }
 
 /* ══════════════════════════════════════════════════
-   MODAL
+    MODAL
    ══════════════════════════════════════════════════ */
 .modal-overlay {
     position: fixed;
@@ -677,7 +677,7 @@
 }
 
 /* ══════════════════════════════════════════════════
-   VISTA: EDITAR USUARIO
+    VISTA: EDITAR USUARIO
    ══════════════════════════════════════════════════ */
 .edit-breadcrumb {
     display: flex;

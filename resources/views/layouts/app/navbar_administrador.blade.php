@@ -3,7 +3,9 @@
     <head>
         @include('partials.head')
         @vite(['resources/css/app.css',
-                'resources/css/admin/usuarios.css'])
+                'resources/css/admin/usuarios.css',
+                'resources/css/admin/categorias.css',
+                'resources/css/admin/libros.css'])
         @livewireStyles
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -342,15 +344,23 @@
                 <flux:navlist.item
                     href="{{ route('usuarios.index') }}"
                     wire:navigate
-                    :current="request()->routeIs('usuarios.index')"
+                    :current="request()->routeIs('usuarios.*')"
                 >
                     Usuarios
                 </flux:navlist.item>
 
                 <flux:navlist.item
-                    href="#"
+                    href="{{ route('categorias.index') }}"
                     wire:navigate
-                    :current="request()->routeIs('vista')"
+                    :current="request()->routeIs('categorias.*')"
+                >
+                    Categorías
+                </flux:navlist.item>
+
+                <flux:navlist.item
+                    href="{{ route('libros.index') }}"
+                    wire:navigate
+                    :current="request()->routeIs('libros.*')"
                 >
                     Libros
                 </flux:navlist.item>
@@ -423,7 +433,7 @@
                         wire:navigate
                         style="
                             margin-right:60px;
-                            @if(request()->routeIs('usuarios.index'))
+                            @if(request()->routeIs('usuarios.*'))
                                 border-bottom:3px solid #3ecfaa;
                                 color:#3ecfaa;
                                 box-shadow: 0 3px 12px rgba(62,207,170,0.35);
@@ -438,11 +448,30 @@
                     </a>
 
                     <a
-                        href="#"
+                        href="{{ route('categorias.index') }}"
                         wire:navigate
                         style="
                             margin-right:60px;
-                            @if(request()->routeIs('libros'))
+                            @if(request()->routeIs('categorias.*'))
+                                border-bottom:3px solid #3ecfaa;
+                                color:#3ecfaa;
+                                box-shadow: 0 3px 12px rgba(62,207,170,0.35);
+                            @else
+                                border-bottom:3px solid transparent;
+                                color:#6f8ca0;
+                            @endif
+                        "
+                        class="arc-nav-link transition-all duration-300 hover:text-[#d0e8e0]"
+                    >
+                        Categorías
+                    </a>
+
+                    <a
+                        href="{{ route('libros.index') }}"
+                        wire:navigate
+                        style="
+                            margin-right:60px;
+                            @if(request()->routeIs('libros.*'))
                                 border-bottom:3px solid #3ecfaa;
                                 color:#3ecfaa;
                                 box-shadow: 0 3px 12px rgba(62,207,170,0.35);

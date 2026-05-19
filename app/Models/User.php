@@ -45,4 +45,10 @@ class User extends Authenticatable
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
+
+    // Un usuario puede tener muchos préstamos
+    public function prestamos()
+    {
+        return $this->hasMany(Prestamo::class);
+    }
 }
