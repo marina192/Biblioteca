@@ -3,7 +3,9 @@
     <head>
         @include('partials.head')
         @vite(['resources/css/app.css',
-                'resources/css/lector/categorias.css'])
+                'resources/css/lector/categorias.css',
+                'resources/css/lector/libros.css',
+                'resources/css/lector/prestamos.css'])
         @livewireStyles
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -340,9 +342,9 @@
             <flux:navlist>
 
                 <flux:navlist.item
-                    href="{{ route('lector.dashboard') }}"
+                    href="{{ route('lector.libros.index') }}"
                     wire:navigate
-                    :current="request()->routeIs('lector.dashboard')"
+                    :current="request()->routeIs('lector.libros.*')"
                 >
                     Libros
                 </flux:navlist.item>
@@ -356,9 +358,9 @@
                 </flux:navlist.item>
 
                 <flux:navlist.item
-                    href="#"
+                    href="{{ route('lector.prestamos.index') }}"
                     wire:navigate
-                    :current="request()->routeIs('vista')"
+                    :current="request()->routeIs('lector.prestamos.*')"
                 >
                     Préstamos
                 </flux:navlist.item>
@@ -403,11 +405,11 @@
                 <nav style="display:flex; align-items:stretch; height:100%;">
 
                     <a
-                        href="{{ route('lector.dashboard') }}"
+                        href="{{ route('lector.libros.index') }}"
                         wire:navigate
                         style="
                             margin-right:60px;
-                            @if(request()->routeIs('lector.dashboard'))
+                            @if(request()->routeIs('lector.libros.*'))
                                 border-bottom:3px solid #3ecfaa;
                                 color:#3ecfaa;
                                 box-shadow: 0 3px 12px rgba(62,207,170,0.35);
@@ -441,11 +443,11 @@
                     </a>
 
                     <a
-                        href="#"
+                        href="{{ route('lector.prestamos.index') }}"
                         wire:navigate
                         style="
                             margin-right:60px;
-                            @if(request()->routeIs('ejemplares'))
+                            @if(request()->routeIs('lector.prestamos.*'))
                                 border-bottom:3px solid #3ecfaa;
                                 color:#3ecfaa;
                                 box-shadow: 0 3px 12px rgba(62,207,170,0.35);

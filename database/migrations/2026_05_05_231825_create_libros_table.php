@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('autor');
+            $table->text('sinopsis')->nullable();
             $table->string('editorial');
             $table->string('imagenes')->nullable();
             $table->date('fecha_publicacion');

@@ -93,6 +93,19 @@
                     </div>
 
                 </div>
+
+                <div class="ledit-form-group-sinopsis">
+                    <label class="ledit-form-label" for="sinopsis">Sinopsis</label>
+                    <textarea id="sinopsis"
+                        name="sinopsis"
+                        class="ledit-form-input {{ $errors->has('sinopsis') ? 'ledit-input-error' : '' }}"
+                        placeholder="Sinopsis"
+                        required>{{ old('sinopsis', $libro->sinopsis) }}</textarea>
+                    @error('sinopsis')
+                        <span class="ledit-form-error">{{ $message }}</span>
+                    @enderror
+                </div>
+                    
             </div>
         </div>
 

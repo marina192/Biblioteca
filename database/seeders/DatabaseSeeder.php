@@ -15,6 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        $this->call([
+            RolesSeeder::class,
+        ]);
+
         $admin = User::factory()->create([
             'name' => 'Administrador',
             'email' => 'admin@gmail.com',
@@ -31,5 +35,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $lector->assignRole('lector');
+
+        $this->call([
+            CategoriaSeeder::class,
+            LibroSeeder::class,
+            EjemplarSeeder::class,
+            PrestamoSeeder::class,
+        ]);
     }
 }

@@ -27,17 +27,22 @@ class librosController extends Controller
             });
         }
 
-        // Filtrar categoría
-        if ($request->filled('categoria')) {
+        // Filtrar categorías
+        if ($request->filled('categorias')) {
             $query->whereHas('categorias', function ($q) use ($request) {
-                $q->where('categorias.id', $request->categoria);
+                $q->whereIn('categorias.id', $request->categorias);
             });
         }
 
         $libros = $query->paginate(10)->withQueryString();
         $categorias = Categoria::all();
 
-        return view('admin.libros', compact('libros','categorias'));
+        if(auth()->user()->hasRole('admin')){
+            return view('admin.libros', compact('libros','categorias'));
+        }
+        if(auth()->user()->hasRole('lector')){
+            return view('lector.libros', compact('libros','categorias'));
+        }
     }
 
     /**
@@ -57,6 +62,7 @@ class librosController extends Controller
             'titulo' => 'required|string|max:255',
             'autor' => 'required|string',
             'editorial' => 'required|string',
+            'sinopsis' => 'nullable|string',
             'fecha_publicacion' => 'required|date',
             'imagenes.*' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'categorias' => 'nullable|array',
@@ -76,6 +82,7 @@ class librosController extends Controller
             'titulo' => $request->titulo,
             'autor' => $request->autor,
             'editorial' => $request->editorial,
+            'sinopsis' => $request->sinopsis,
             'fecha_publicacion' => $request->fecha_publicacion,
             'imagenes' => $rutas,
         ]);
@@ -92,7 +99,8 @@ class librosController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $libro = Libro::with('categorias')->find($id);
+        return view('lector.libro_show', compact('libro'));
     }
 
     /**
@@ -114,6 +122,7 @@ class librosController extends Controller
             'titulo' => 'required|string|max:255',
             'autor' => 'required|string|max:255',
             'editorial' => 'required|string|max:255',
+            'sinopsis' => 'nullable|string',
             'fecha_publicacion' => 'required|date',
             'imagenes.*' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -140,6 +149,7 @@ class librosController extends Controller
             'titulo' => $request->titulo,
             'autor' => $request->autor,
             'editorial' => $request->editorial,
+            'sinopsis' => $request->sinopsis,
             'fecha_publicacion' => $request->fecha_publicacion,
             'imagenes' => $rutas,
         ]);

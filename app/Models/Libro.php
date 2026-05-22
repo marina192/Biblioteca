@@ -20,6 +20,7 @@ class Libro extends Model
         'titulo',
         'autor',
         'editorial',
+        'sinopsis',
         'imagenes',
         'fecha_publicacion',
     ];

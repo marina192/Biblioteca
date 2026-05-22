@@ -13,7 +13,10 @@ export default defineConfig({
                 'resources/css/admin/categorias.css',
                 'resources/css/admin/libros.css',
                 'resources/css/admin/ejemplares.css',
-                'resources/css/lector/categorias.css'
+                'resources/css/admin/prestamos.css',
+                'resources/css/lector/categorias.css',
+                'resources/css/lector/libros.css',
+                'resources/css/lector/prestamos.css',
             ],
             refresh: true,
             fonts: [

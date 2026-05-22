@@ -463,6 +463,12 @@
 .ledit-input-error { border-color: #f87171; }
 .ledit-form-error { font-size: 0.8125rem; color: #dc2626; }
 
+.ledit-form-group-sinopsis textarea {
+    min-height: 180px;
+    margin-top: 10px;
+    resize: vertical;
+}
+
 /* Checkboxes de categorías */
 .ledit-checkboxes-grid {
     display: flex;

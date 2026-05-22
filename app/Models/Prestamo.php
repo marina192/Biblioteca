@@ -13,6 +13,7 @@ class Prestamo extends Model
 
     protected $casts = [
         'fecha_prestamo' => 'date',
+        'fecha_devolucion_esperada' => 'date',
         'fecha_devolucion' => 'date',
     ];
 
@@ -20,6 +21,7 @@ class Prestamo extends Model
         'ejemplar_id',
         'user_id',
         'fecha_prestamo',
+        'fecha_devolucion_esperada',
         'fecha_devolucion',
     ];
 

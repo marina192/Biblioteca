@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('ejemplar_id')->constrained('ejemplares')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->date('fecha_prestamo');
+            $table->date('fecha_devolucion_esperada');
             $table->date('fecha_devolucion')->nullable();
             $table->softDeletes();
             $table->timestamps();

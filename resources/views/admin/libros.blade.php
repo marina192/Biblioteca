@@ -64,7 +64,7 @@
                         @foreach ($imgs as $i => $imagen)
                             <div class="libros-carousel-slide">
                                 <img src="{{ asset('storage/' . $imagen) }}"
-                                     alt="{{ $libro->titulo }} imagen {{ $i + 1 }}">
+                                    alt="{{ $libro->titulo }} imagen {{ $i + 1 }}">
                             </div>
                         @endforeach
                     </div>
@@ -137,6 +137,9 @@
                         </svg>
                         {{ $libro->editorial }}
                     </span>
+                    <span class="libros-meta-item">
+                        {{ $libro->sinopsis ?? 'Sin sinopsis' }}
+                    </span>
                 </div>
 
                 <div class="libros-card-actions">
@@ -148,20 +151,6 @@
                         </svg>
                         Editar
                     </a>
-                    <form method="POST" action="{{ route('admin.libros.destroy', $libro->id) }}"
-                            class="libros-inline-form"
-                            onsubmit="return confirm('¿Eliminar este libro?')">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="libros-action-btn libros-action-btn--danger">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                                <path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"/>
-                                <path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/>
-                            </svg>
-                            Eliminar
-                        </button>
-                    </form>
                 </div>
             </div>
 
@@ -217,6 +206,11 @@
                     <label class="libros-form-label">Editorial</label>
                     <input type="text" name="editorial" class="libros-form-input"
                         placeholder="Editorial" required>
+                </div>
+                <div class="libros-form-group">
+                    <label class="libros-form-label">Sinopsis</label>
+                    <textarea name="sinopsis" class="libros-form-input"
+                        placeholder="Sinopsis del libro" required></textarea>
                 </div>
                 <div class="libros-form-group">
                     <label class="libros-form-label">Fecha de publicación</label>
