@@ -8,6 +8,8 @@ use App\Http\Controllers\categoriasController;
 use App\Http\Controllers\librosController;
 use App\Http\Controllers\ejemplaresController;
 use App\Http\Controllers\prestamosController;
+use App\Http\Controllers\reportesController;
+use App\Http\Controllers\pdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +61,10 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('libros', librosController::class);
     Route::resource('ejemplares', ejemplaresController::class);
     Route::resource('prestamos', prestamosController::class);
+    Route::resource('reportes', reportesController::class);
+    Route::get('/pdf/descargar', [pdfController::class, 'descargar'])->name('pdf.descargar');
+    Route::get('/pdf/ver', [pdfController::class, 'ver'])->name('pdf.ver');
+    Route::get('/pdf/guardar', [pdfController::class, 'guardar'])->name('pdf.guardar');
 });
 
 require __DIR__.'/settings.php';

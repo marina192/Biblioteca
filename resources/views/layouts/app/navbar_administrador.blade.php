@@ -7,7 +7,8 @@
                 'resources/css/admin/categorias.css',
                 'resources/css/admin/libros.css',
                 'resources/css/admin/ejemplares.css',
-                'resources/css/admin/prestamos.css'])
+                'resources/css/admin/prestamos.css',
+                'resources/css/admin/reportes.css'])
         @livewireStyles
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -392,9 +393,9 @@
                 </flux:navlist.item>
 
                 <flux:navlist.item
-                    href="#"
+                    href="{{ route('admin.reportes.index') }}"
                     wire:navigate
-                    :current="request()->routeIs('vista')"
+                    :current="request()->routeIs('admin.reportes.*')"
                 >
                     Reportes
                 </flux:navlist.item>
@@ -545,10 +546,10 @@
                     </a>
 
                     <a
-                        href="#"
+                        href="{{ route('admin.reportes.index') }}"
                         wire:navigate
                         style="
-                            @if(request()->routeIs('reportes'))
+                            @if(request()->routeIs('admin.reportes.*'))
                                 border-bottom:3px solid #3ecfaa;
                                 color:#3ecfaa;
                                 box-shadow: 0 3px 12px rgba(62,207,170,0.35);

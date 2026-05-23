@@ -1,0 +1,99 @@
+/* =============================================================
+    VISTA: Generación de Reportes
+    Archivo: resources/css/admin/reportes.css
+   ============================================================= */
+
+.repo-page { padding: 1.5rem 0; }
+.repo-header { margin-bottom: 1.5rem; }
+.repo-title { font-size: 22px; font-weight: 500; color: var(--color-text-primary, #1a1a1a); margin: 0 0 4px; }
+.repo-subtitle { font-size: 14px; color: var(--color-text-secondary, #6b7280); margin: 0; }
+
+/* Layout superior */
+.repo-top-grid { display: grid; grid-template-columns: 1fr 260px; gap: 16px; margin-bottom: 16px; }
+@media (max-width: 768px) { .repo-top-grid { grid-template-columns: 1fr; } }
+
+/* Panel base */
+.repo-panel { background: #fff; border: 0.5px solid #e5e7eb; border-radius: 12px; padding: 1.25rem; }
+
+/* Panel de filtros */
+.repo-panel-heading { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; margin: 0 0 1rem; }
+.repo-fields-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.repo-field { display: flex; flex-direction: column; gap: 4px; }
+.repo-field label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; color: #6b7280; }
+.repo-field input, .repo-field select {
+    font-size: 13px; padding: 6px 10px; border: 0.5px solid #e5e7eb;
+    border-radius: 8px; background: #f9fafb; color: #111; width: 100%; box-sizing: border-box;
+}
+.repo-divider { height: 0.5px; background: #e5e7eb; margin: 12px 0; }
+.repo-section-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; color: #6b7280; margin: 0 0 8px; }
+.repo-dates-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+
+/* Botones de filtro */
+.repo-filter-actions { display: flex; gap: 8px; margin-top: 12px; }
+.repo-btn-search {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 13px;
+    padding: 7px 14px; border-radius: 8px; border: 0.5px solid #d1d5db;
+    background: #fff; cursor: pointer;
+}
+.repo-btn-clear {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 13px;
+    padding: 7px 10px; border-radius: 8px; border: none; background: none;
+    color: #6b7280; cursor: pointer; text-decoration: none;
+}
+
+/* Pills filtros activos */
+.repo-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.repo-pill {
+    display: inline-flex; align-items: center; gap: 4px; font-size: 12px;
+    padding: 3px 10px; border-radius: 100px; background: #f3f4f6;
+    border: 0.5px solid #e5e7eb; color: #6b7280;
+}
+
+/* Panel de acción */
+.repo-action-panel { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.repo-action-icon {
+    width: 52px; height: 52px; background: #eff6ff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
+}
+.repo-action-icon svg { width: 22px; height: 22px; stroke: #3b82f6; }
+.repo-action-title { font-size: 15px; font-weight: 500; margin: 0 0 4px; }
+.repo-action-desc { font-size: 13px; color: #6b7280; margin: 0 0 16px; line-height: 1.5; }
+.repo-counter { font-weight: 500; color: #111; }
+.repo-btn-generate {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 10px; border-radius: 8px; background: #eff6ff;
+    border: none; color: #1d4ed8; font-size: 14px; font-weight: 500;
+    cursor: pointer; margin-bottom: 8px; text-decoration: none;
+}
+.repo-btn-generate:hover { background: #dbeafe; }
+.repo-btn-view {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 8px; border-radius: 8px; border: 0.5px solid #e5e7eb;
+    background: none; color: #6b7280; font-size: 13px; cursor: pointer; text-decoration: none;
+}
+.repo-btn-view:hover { background: #f9fafb; }
+
+/* Tabla de preview */
+.repo-preview-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.repo-preview-title { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; margin: 0; }
+.repo-stats { display: flex; gap: 12px; }
+.repo-stat { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #6b7280; }
+.repo-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.repo-dot-active  { background: #1D9E75; }
+.repo-dot-overdue { background: #D85A30; }
+.repo-dot-returned{ background: #888780; }
+.repo-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.repo-table th {
+    font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .06em;
+    color: #6b7280; padding: 8px 10px; border-bottom: 0.5px solid #e5e7eb; text-align: left;
+}
+.repo-table td { padding: 12px 10px; border-bottom: 0.5px solid #f3f4f6; vertical-align: middle; }
+.repo-table tr:last-child td { border-bottom: none; }
+.repo-book-title { font-weight: 500; font-size: 13px; margin: 0; }
+.repo-badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 100px; }
+.repo-badge-active   { background: #E1F5EE; color: #0F6E56; }
+.repo-badge-overdue  { background: #FAECE7; color: #993C1D; }
+.repo-badge-returned { background: #F1EFE8; color: #5F5E5A; }
+.repo-date-overdue { color: #D85A30; font-weight: 500; }
+.repo-show-more { text-align: center; padding-top: 12px; border-top: 0.5px solid #f3f4f6; margin-top: 4px; }
+.repo-show-more a { font-size: 13px; color: #3b82f6; text-decoration: none; }
