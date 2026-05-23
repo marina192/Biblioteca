@@ -9,6 +9,7 @@ export default defineConfig({
     plugins: [
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js',
+                'resources/css/admin/dashboard.css',
                 'resources/css/admin/usuarios.css',
                 'resources/css/admin/categorias.css',
                 'resources/css/admin/libros.css',
