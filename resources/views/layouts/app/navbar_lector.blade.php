@@ -342,6 +342,14 @@
             <flux:navlist>
 
                 <flux:navlist.item
+                    href="{{ route('lector.dashboard') }}"
+                    wire:navigate
+                    :current="request()->routeIs('lector.dashboard')"
+                >
+                    Edda
+                </flux:navlist.item>
+
+                <flux:navlist.item
                     href="{{ route('lector.libros.index') }}"
                     wire:navigate
                     :current="request()->routeIs('lector.libros.*')"

@@ -346,6 +346,14 @@
             <flux:navlist>
 
                 <flux:navlist.item
+                    href="{{ route('admin.dashboard') }}"
+                    wire:navigate
+                    :current="request()->routeIs('admin.dashboard')"
+                >
+                    Edda
+                </flux:navlist.item>
+
+                <flux:navlist.item
                     href="{{ route('admin.usuarios.index') }}"
                     wire:navigate
                     :current="request()->routeIs('admin.usuarios.*')"
