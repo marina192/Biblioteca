@@ -19,7 +19,17 @@ use App\Mail\BienvenidaLector;
 |--------------------------------------------------------------------------
 */
 
-Route::view('/', 'welcome')->name('home');
+Route::get('/', function () {
+    if (auth()->check()) {
+        if (auth()->user()->hasRole('admin')) {
+            return redirect()->route('admin.dashboard');
+        }
+        if (auth()->user()->hasRole('lector')) {
+            return redirect()->route('lector.dashboard');
+        }
+    }
+    return view('welcome');
+})->name('home');
 
 Route::get('/preview-correo', function () {
 
