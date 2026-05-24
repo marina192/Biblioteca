@@ -85,7 +85,7 @@
                         </button>
                     </div>
                     <span style="font-size: 12px; color: #A32D2D;">
-                        ⚠ No puedes solicitar préstamos debido a bloqueos anteriores por no devolver tus préstamos a tiempo. Por favor, contacta con el personal de la biblioteca para más información.
+                        ⚠ No puedes solicitar préstamos debido a bloqueos anteriores por no devolver los libros a tiempo. Por favor, contacta con el personal de la biblioteca para más información.
                     </span>
                 </div>
             @else
