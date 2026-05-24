@@ -148,6 +148,25 @@ El seeder crea dos usuarios listos para usar:
 
 ---
 
+## Lógica de Negocio Relevante
+
+### Préstamos vencidos y bloqueo de usuarios
+
+Cuando un préstamo supera su fecha de devolución esperada, aparece marcado como **Vencido** en la gestión de préstamos del administrador.
+
+Ante un préstamo vencido, el administrador puede marcar el ejemplar como perdido usando el ícono de eliminar (🗑️) en la fila del préstamo. Esto produce dos efectos automáticos:
+
+- El ejemplar queda con estado `perdido` y deja de estar disponible para futuros préstamos.
+- El usuario responsable queda bloqueado (`prestamos_blocked = true`) y no puede solicitar más préstamos, ni desde la web ni desde la API.
+
+### Desbloqueo de usuarios
+
+Un usuario bloqueado solo puede ser desbloqueado por un **super administrador** desde la sección de manejo de usuarios, usando el botón **Desbloquear** que aparece en la fila del usuario afectado.
+
+> Para probar este flujo con los datos de prueba, puedes simular un préstamo vencido cambiando manualmente `fecha_devolucion_esperada` a una fecha pasada directamente en la base de datos.
+
+---
+
 ## Dependencias Principales
 
 | Paquete | Uso |
