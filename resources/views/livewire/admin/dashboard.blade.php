@@ -125,7 +125,6 @@
 </div>
 
 <script>
-    // Datos desde PHP — ordenados por mes numérico, traducidos al español
     const dashLabels   = @json(array_values($prestamosPorMes->pluck('mes')->toArray()));
     const dashActivos  = @json(array_values($prestamosPorMes->pluck('total')->toArray()));
     const dashArchivo  = @json(array_values($prestamosDevueltosPorMes->pluck('total')->toArray()));
@@ -136,7 +135,6 @@
         const canvas = document.getElementById('prestamosChart');
         if (!canvas) return;
 
-        // Destruir instancia previa si existe (wire:navigate reutiliza el DOM)
         if (dashChartInstance) {
             dashChartInstance.destroy();
             dashChartInstance = null;
@@ -187,9 +185,7 @@
         });
     }
 
-    // Inicializar al cargar la página normalmente
     dashInitChart();
 
-    // Reinicializar tras navegación SPA de Livewire (wire:navigate)
     document.addEventListener('livewire:navigated', dashInitChart);
 </script>

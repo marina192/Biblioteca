@@ -365,14 +365,6 @@
                     Préstamos
                 </flux:navlist.item>
 
-                <flux:navlist.item
-                    href="#"
-                    wire:navigate
-                    :current="request()->routeIs('vista')"
-                >
-                    Gráficos
-                </flux:navlist.item>
-
             </flux:navlist>
 
         </flux:sidebar>
@@ -459,25 +451,6 @@
                         class="arc-nav-link transition-all duration-300 hover:text-[#d0e8e0]"
                     >
                         Préstamos
-                    </a>
-
-                    <a
-                        href="#"
-                        wire:navigate
-                        style="
-                            margin-right:60px;
-                            @if(request()->routeIs('prestamos'))
-                                border-bottom:3px solid #3ecfaa;
-                                color:#3ecfaa;
-                                box-shadow: 0 3px 12px rgba(62,207,170,0.35);
-                            @else
-                                border-bottom:3px solid transparent;
-                                color:#6f8ca0;
-                            @endif
-                        "
-                        class="arc-nav-link transition-all duration-300 hover:text-[#d0e8e0]"
-                    >
-                        Gráficos
                     </a>
 
                 </nav>

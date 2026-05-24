@@ -57,13 +57,13 @@ class Dashboard extends Component
 
 
         return view('livewire.admin.dashboard', [
-            'prestamosPorMes' => $prestamosPorMes,
+            'prestamosPorMes'          => $prestamosPorMes,
             'prestamosDevueltosPorMes' => $prestamosDevueltosPorMes,
-            'librosMasLeidos' => $librosMasLeidos,
-            'ejemplares' => $ejemplares,
-            'prestamosActivos' => $prestamosActivos,
-            'bibliotecarios' => $bibliotecarios,
-            'prestamosVencidos' => $prestamosVencidos,
+            'librosMasLeidos'          => $librosMasLeidos,
+            'ejemplares'               => $ejemplares,
+            'prestamosActivos'         => $prestamosActivos,
+            'bibliotecarios'           => $bibliotecarios,
+            'prestamosVencidos'        => $prestamosVencidos,
         ])->layout('layouts.app_administrador');
     }
 }
