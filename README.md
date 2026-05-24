@@ -56,6 +56,8 @@ Edita el archivo `.env` con tus datos (ver sección [Variables de Entorno](#vari
 php artisan migrate --seed
 ```
 
+Esto crea todas las tablas y ejecuta el `DatabaseSeeder`, que incluye roles, usuarios de prueba, categorías, libros, ejemplares y préstamos de muestra.
+
 ### 6. Iniciar la aplicación
 
 **Opción A — Desarrollo con hot reload (requiere dos terminales):**
@@ -93,11 +95,8 @@ Estas son las variables que debes ajustar en tu archivo `.env`:
 ### Aplicación
 
 ```env
-APP_NAME="Edda"
-APP_ENV=local
-APP_DEBUG=true
+APP_KEY=        # Se genera automáticamente con php artisan key:generate
 APP_URL=http://localhost:8000
-VITE_APP_URL="${APP_URL}"
 ```
 
 ### Base de datos
@@ -106,23 +105,26 @@ VITE_APP_URL="${APP_URL}"
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=edda        # Nombre de tu base de datos
-DB_USERNAME=root         # Tu usuario de MySQL
+DB_DATABASE=biblioteca   # Crea esta base de datos en MySQL antes de migrar
+DB_USERNAME=             # Tu usuario de MySQL
 DB_PASSWORD=             # Tu contraseña de MySQL
 ```
 
 ### Correo electrónico
 
-Para desarrollo se recomienda [Mailtrap](https://mailtrap.io). Crea una cuenta gratuita, entra a tu inbox y copia las credenciales SMTP:
+El proyecto usa Gmail como servidor de correo. Necesitas una **contraseña de aplicación** de Google (no tu contraseña normal):
+
+1. Ve a tu cuenta de Google → Seguridad → [Contraseñas de aplicación](https://myaccount.google.com/apppasswords)
+2. Crea una contraseña para "Correo" y cópiala
 
 ```env
 MAIL_MAILER=smtp
-MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_HOST=smtp.gmail.com
 MAIL_PORT=2525
-MAIL_USERNAME=           # Tu usuario de Mailtrap
-MAIL_PASSWORD=           # Tu contraseña de Mailtrap
-MAIL_FROM_ADDRESS="no-reply@edda.com"
-MAIL_FROM_NAME="Edda Biblioteca"
+MAIL_USERNAME=           # Tu correo de Gmail
+MAIL_PASSWORD=           # La contraseña de aplicación generada
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=       # El mismo correo de Gmail
 ```
 
 ### Colas
