@@ -329,7 +329,7 @@
             }
         </style>
     </head>
-    <body class="min-h-screen bg-white text-gray-900 overflow-x-hidden">
+    <body id="main-body" class="min-h-screen bg-white text-gray-900 overflow-x-hidden">
 
         <!-- Navegación móvil -->
         <flux:sidebar
@@ -611,5 +611,34 @@
         @endpersist
 
         @fluxScripts
+
+        
+        <script>
+            function updateBodyBg() {
+                const body = document.getElementById('main-body');
+                const isSettings = window.location.pathname.startsWith('/settings') 
+                                || window.location.pathname.startsWith('/user/confirm-password');
+
+                if (isSettings) {
+                    body.style.backgroundColor = '#060e1c';
+                    body.style.color = '#f3f4f6';
+
+                    document.querySelectorAll('label').forEach(el => {
+                        el.style.color = '#c8dde8';
+                    });
+                } else {
+                    body.style.backgroundColor = '#ffffff';
+                    body.style.color = '#111827';
+
+                    document.querySelectorAll('label').forEach(el => {
+                        el.style.color = '';
+                    });
+                }
+}
+
+            updateBodyBg();
+            document.addEventListener('livewire:navigated', updateBodyBg);
+        </script>
+
     </body>
 </html>
