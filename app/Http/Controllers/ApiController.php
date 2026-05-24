@@ -56,12 +56,16 @@ class ApiController extends Controller
     // Registra un nuevo préstamo de un ejemplar disponible asociado a un libro.
     public function storePrestamo(Request $request)
     {
+        $user = $request->user();
+        if($user->hasRole('admin')){
+            return response()->json(['error' => 'No puedes solicitar préstamos como administrador'], 403);
+        }
+
         $libro = Libro::find($request->libro_id);
         if (!$libro) {
             return response()->json(['error' => 'Libro no encontrado'], 404);
         }
 
-        $user = $request->user();
         if ($user->prestamos_blocked) {
             return response()->json(['error' => 'No puedes solicitar préstamos debido a bloqueos anteriores por no devolver los libros a tiempo. Por favor, contacta con el personal de la biblioteca para más información.'], 403);
         }
