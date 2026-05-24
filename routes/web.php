@@ -10,6 +10,8 @@ use App\Http\Controllers\ejemplaresController;
 use App\Http\Controllers\prestamosController;
 use App\Http\Controllers\reportesController;
 use App\Http\Controllers\pdfController;
+use App\Models\User;
+use App\Mail\BienvenidaLector;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,17 @@ use App\Http\Controllers\pdfController;
 */
 
 Route::view('/', 'welcome')->name('home');
+
+Route::get('/preview-correo', function () {
+
+    $user = new User();
+
+    $user->name = 'Ana García';
+    $user->email = 'correo@gmail.com';
+    $user->created_at = now();
+
+    return new BienvenidaLector($user);
+});
 
 /*
 |--------------------------------------------------------------------------

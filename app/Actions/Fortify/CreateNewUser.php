@@ -7,6 +7,8 @@ use App\Concerns\ProfileValidationRules;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BienvenidaLector;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -31,6 +33,8 @@ class CreateNewUser implements CreatesNewUsers
         ]);
 
         $user->assignRole('lector');
+
+        Mail::to($user->email)->send(new BienvenidaLector($user));
 
         return $user;
     }
