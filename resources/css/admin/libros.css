@@ -463,9 +463,19 @@
 .ledit-input-error { border-color: #f87171; }
 .ledit-form-error { font-size: 0.8125rem; color: #dc2626; }
 
+.ledit-form-group-sinopsis {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 14px;
+}
 .ledit-form-group-sinopsis textarea {
     min-height: 180px;
-    margin-top: 10px;
+    resize: vertical;
+}
+
+.libros-modal-form textarea.libros-form-input {
+    min-height: 100px;
     resize: vertical;
 }
 

@@ -9,32 +9,34 @@
 </div>
 
 {{-- Filtros de categoría --}}
-<div class="libros-filters-row">
+<form method="GET" action="{{ route('lector.libros.index') }}" id="filtros-form">
+    {{-- Conservar búsqueda si existe --}}
+    @if(request('search'))
+        <input type="hidden" name="search" value="{{ request('search') }}">
+    @endif
 
-    {{-- Botón Todos --}}
-    <a href="{{ route('lector.libros.index') }}"
-        class="libros-filter-btn {{ !request()->has('categorias') ? 'active' : '' }}">
-        Todos
-    </a>
-
-    @foreach ($categorias as $cat)
-
-        @php
-            $categoriasSeleccionadas = request()->input('categorias', []);
-            $activo = in_array($cat->id, $categoriasSeleccionadas);
-        @endphp
-
-        <a href="{{ route('lector.libros.index', [
-                'categorias' => $activo
-                    ? array_diff($categoriasSeleccionadas, [$cat->id]) // quitar
-                    : array_merge($categoriasSeleccionadas, [$cat->id]) // agregar
-            ]) }}"
-            class="libros-filter-btn {{ $activo ? 'active' : '' }}">
-            {{ $cat->nombre }}
+    <div class="libros-filters-row">
+        {{-- Botón Todos --}}
+        <a href="{{ route('lector.libros.index', request()->only('search')) }}"
+            class="libros-filter-btn {{ !request('categorias') ? 'active' : '' }}">
+            Todos
         </a>
 
-    @endforeach
-</div>
+        @foreach ($categorias as $cat)
+            <label class="libros-filter-btn {{ in_array($cat->id, request('categorias', [])) ? 'active' : '' }}">
+                <input
+                    type="checkbox"
+                    name="categorias[]"
+                    value="{{ $cat->id }}"
+                    {{ in_array($cat->id, request('categorias', [])) ? 'checked' : '' }}
+                    onchange="document.getElementById('filtros-form').submit()"
+                    style="display: none;"
+                >
+                {{ $cat->nombre }}
+            </label>
+        @endforeach
+    </div>
+</form>
 
 {{-- Buscador --}}
 <form method="GET" action="{{ route('lector.libros.index') }}" class="libros-search-row">

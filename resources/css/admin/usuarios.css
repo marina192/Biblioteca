@@ -846,10 +846,23 @@
     .toolbar__actions { width: 100%; justify-content: flex-end; }
 }
 
+.btn-action--unblock {
+    background: #fff7ed;
+    color: #ea580c;
+    border-color: rgba(234, 88, 12, 0.25);
+}
+
+.btn-action--unblock:hover {
+    background: #ea580c;
+    color: #fff;
+    border-color: #ea580c;
+}
+
 /* ══════════════════════════════════════════════════
     VISTA: EDITAR USUARIO
     Archivo: resources/css/admin/usuarios.css
    ══════════════════════════════════════════════════ */
+
 .edit-breadcrumb {
     display: flex;
     align-items: center;

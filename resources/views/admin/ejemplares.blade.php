@@ -198,6 +198,17 @@
                     class="ejmp-form-input" required>
             </div>
 
+            <div class="ejmp-form-group">
+                <label class="ejmp-form-label" for="cantidad">Cantidad de ejemplares</label>
+                <div class="ejmp-cantidad-wrapper">
+                    <button type="button" class="ejmp-cantidad-btn" onclick="ejmpCambiarCantidad(-1)">−</button>
+                    <input type="number" id="cantidad" name="cantidad"
+                        value="1" min="1" max="50"
+                        class="ejmp-form-input ejmp-cantidad-input" required>
+                    <button type="button" class="ejmp-cantidad-btn" onclick="ejmpCambiarCantidad(1)">+</button>
+                </div>
+            </div>
+
             <div class="ejmp-modal-footer">
                 <button type="button" class="ejmp-btn-cancel"
                         onclick="document.getElementById('ejmp-modal-nuevo').classList.add('hidden')">
@@ -214,5 +225,14 @@
         </form>
     </div>
 </div>
+
+<script>
+function ejmpCambiarCantidad(dir) {
+    const input = document.getElementById('cantidad');
+    const val = parseInt(input.value) || 1;
+    const nuevo = Math.min(50, Math.max(1, val + dir));
+    input.value = nuevo;
+}
+</script>
 
 </x-layouts::app_administrador>

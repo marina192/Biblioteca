@@ -95,6 +95,12 @@ class usuarioController extends Controller
     {
         $usuario = User::findOrFail($id);
 
+        // Caso especial: desbloquear préstamos
+            if ($request->filled('desbloquear')) {
+                $usuario->update(['prestamos_blocked' => false]);
+                return redirect()->route('admin.usuarios.index')->with('success', 'Usuario desbloqueado exitosamente.');
+            }
+
         if ($request->filled('rol') && !$request->filled('nombre')) {
             $request->validate([
                 'rol' => 'required|in:lector,admin',
@@ -122,6 +128,14 @@ class usuarioController extends Controller
         }
 
         return redirect()->route('admin.usuarios.index')->with('success', 'Usuario actualizado exitosamente.');
+    }
+
+    /**
+     * Permite a un usuario volver a hacer préstamos
+     */
+    public function desbloquearUsuario()
+    {
+
     }
 
     /**

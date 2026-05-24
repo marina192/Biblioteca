@@ -16,18 +16,34 @@
 </div>
 
 {{-- Filtros de categoría --}}
-<div class="libros-filters-row">
-    <a href="{{ route('admin.libros.index') }}"
-        class="libros-filter-btn {{ !request('categoria') ? 'active' : '' }}">
-        Todos
-    </a>
-    @foreach ($categorias as $cat)
-        <a href="{{ route('admin.libros.index', ['categoria' => $cat->id]) }}"
-            class="libros-filter-btn {{ request('categoria') == $cat->id ? 'active' : '' }}">
-            {{ $cat->nombre }}
+<form method="GET" action="{{ route('admin.libros.index') }}" id="filtros-form">
+    {{-- Conservar búsqueda si existe --}}
+    @if(request('search'))
+        <input type="hidden" name="search" value="{{ request('search') }}">
+    @endif
+
+    <div class="libros-filters-row">
+        {{-- Botón Todos --}}
+        <a href="{{ route('admin.libros.index', request()->only('search')) }}"
+            class="libros-filter-btn {{ !request('categorias') ? 'active' : '' }}">
+            Todos
         </a>
-    @endforeach
-</div>
+
+        @foreach ($categorias as $cat)
+            <label class="libros-filter-btn {{ in_array($cat->id, request('categorias', [])) ? 'active' : '' }}">
+                <input
+                    type="checkbox"
+                    name="categorias[]"
+                    value="{{ $cat->id }}"
+                    {{ in_array($cat->id, request('categorias', [])) ? 'checked' : '' }}
+                    onchange="document.getElementById('filtros-form').submit()"
+                    style="display: none;"
+                >
+                {{ $cat->nombre }}
+            </label>
+        @endforeach
+    </div>
+</form>
 
 {{-- Buscador --}}
 <form method="GET" action="{{ route('admin.libros.index') }}" class="libros-search-row">
@@ -194,28 +210,26 @@
             <div class="libros-modal-grid">
                 <div class="libros-form-group">
                     <label class="libros-form-label">Título</label>
-                    <input type="text" name="titulo" class="libros-form-input"
-                        placeholder="Título del libro" required>
+                    <input type="text" name="titulo" class="libros-form-input" placeholder="Título del libro" required>
                 </div>
                 <div class="libros-form-group">
                     <label class="libros-form-label">Autor</label>
-                    <input type="text" name="autor" class="libros-form-input"
-                        placeholder="Nombre del autor" required>
+                    <input type="text" name="autor" class="libros-form-input" placeholder="Nombre del autor" required>
                 </div>
                 <div class="libros-form-group">
                     <label class="libros-form-label">Editorial</label>
-                    <input type="text" name="editorial" class="libros-form-input"
-                        placeholder="Editorial" required>
+                    <input type="text" name="editorial" class="libros-form-input" placeholder="Editorial" required>
                 </div>
                 <div class="libros-form-group">
                     <label class="libros-form-label">Sinopsis</label>
-                    <textarea name="sinopsis" class="libros-form-input"
-                        placeholder="Sinopsis del libro" required></textarea>
+                    <textarea name="sinopsis" class="libros-form-input" placeholder="Sinopsis del libro" required></textarea>
                 </div>
-                <div class="libros-form-group">
-                    <label class="libros-form-label">Fecha de publicación</label>
-                    <input type="date" name="fecha_publicacion" class="libros-form-input" required>
-                </div>
+            </div>
+
+            {{-- Fecha fuera del grid, ancho completo --}}
+            <div class="libros-form-group">
+                <label class="libros-form-label">Fecha de publicación</label>
+                <input type="date" name="fecha_publicacion" class="libros-form-input" required>
             </div>
 
             <div class="libros-form-group">

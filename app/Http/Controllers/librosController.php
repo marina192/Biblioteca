@@ -15,6 +15,11 @@ class librosController extends Controller
      */
     public function index(Request $request)
     {
+        $request->validate([
+            'categorias'   => ['nullable', 'array'],
+            'categorias.*' => ['integer', 'exists:categorias,id'],
+        ]);
+
         $query = Libro::with(['categorias']);
 
         // Buscar
@@ -29,9 +34,13 @@ class librosController extends Controller
 
         // Filtrar categorías
         if ($request->filled('categorias')) {
-            $query->whereHas('categorias', function ($q) use ($request) {
-                $q->whereIn('categorias.id', $request->categorias);
-            });
+            $categoriasIds = $request->categorias;
+
+            foreach ($categoriasIds as $categoriaId) {
+                $query->whereHas('categorias', function ($q) use ($categoriaId) {
+                    $q->where('categorias.id', $categoriaId);
+                });
+            }
         }
 
         $libros = $query->paginate(10)->withQueryString();

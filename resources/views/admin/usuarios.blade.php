@@ -206,6 +206,23 @@
                                                         <option value="admin"  {{ $usuario->hasRole('admin')  ? 'selected' : '' }}>Admin</option>
                                                     </select>
                                                 </form>
+                                                @if($usuario->prestamos_blocked)
+                                                    <form action="{{ route('admin.usuarios.update', $usuario->id) }}" method="POST" class="delete-form">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <input type="hidden" name="desbloquear" value="1">
+                                                        <button type="submit" class="btn-action btn-action--unblock" title="Desbloquear préstamos">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                <path d="M8 11V7a4 4 0 0 1 8 0"/>
+                                                                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                                                                <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                                                            </svg>
+                                                            Desbloquear
+                                                        </button>
+                                                    </form>
+                                                @endif
                                             @endif
                                         </div>
                                     @endif

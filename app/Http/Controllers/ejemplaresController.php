@@ -38,13 +38,26 @@ class ejemplaresController extends Controller
     {
         $request->validate([
             'libro_id' => 'required|exists:libros,id',
-            'estado' => 'required|in:disponible,prestado,dañado',
-            'ubicacion' => 'required',
+            'estado'   => 'required|in:disponible,prestado,dañado',
+            'ubicacion'=> 'required',
+            'cantidad' => 'required|integer|min:1|max:50',
         ]);
 
-        Ejemplar::create($request->all());
+        $cantidad = (int) $request->cantidad;
 
-        return redirect()->route('admin.ejemplares.index')->with('success', 'Ejemplar creado exitosamente.');
+        for ($i = 0; $i < $cantidad; $i++) {
+            Ejemplar::create([
+                'libro_id'  => $request->libro_id,
+                'estado'    => $request->estado,
+                'ubicacion' => $request->ubicacion,
+            ]);
+        }
+
+        $msg = $cantidad === 1
+            ? 'Ejemplar creado exitosamente.'
+            : "{$cantidad} ejemplares creados exitosamente.";
+
+        return redirect()->route('admin.ejemplares.index')->with('success', $msg);
     }
 
     /**
